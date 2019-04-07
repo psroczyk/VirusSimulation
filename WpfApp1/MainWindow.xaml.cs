@@ -23,7 +23,26 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            //myGrid.
+
+            TextBlock txt2 = new TextBlock();
+            txt2.Text = "Quarter 1";
+            txt2.FontSize = 12;
+            txt2.FontWeight = FontWeights.Bold;
+            Grid.SetRow(txt2, 1);
+            Grid.SetColumn(txt2, 0);
+            var spr = new Canvas();
+            spr.Background= Brushes.White;
+
+            Grid.SetRow(spr, 3);
+            Grid.SetColumn(spr, 3);
+            var point = new Cell(4, 5);
+            myGrid.Children.Add(spr);
+            myGrid.Children.Add(point);
+        }
+
+        private void MyGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
