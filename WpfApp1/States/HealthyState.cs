@@ -1,28 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Media;
 using WpfApp1.Abstract;
-using WpfApp1.Enums;
 
 namespace WpfApp1.States
 {
-    public class HealthyState : CellState
+    public class HealthyState : ICellState
     {
-        public HealthyState(CellState cellState)
+        public void Handle(Cell cell)
         {
-            this.State = cellState.State;
-        }
-
-        public override void Infect()
-        {
-            this.Cell.CellState = new InfectedState(this);
-        }
-
-        public override void Cure()
-        {
-            return;
+            cell.Background = Brushes.LawnGreen;
         }
     }
 }

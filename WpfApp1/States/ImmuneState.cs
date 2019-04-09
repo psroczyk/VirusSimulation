@@ -1,27 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Media;
 using WpfApp1.Abstract;
 
 namespace WpfApp1.States
 {
-    public class ImmuneState : CellState
+    public class ImmuneState : ICellState
     {
-        public ImmuneState(CellState cellState)
+        public void Handle(Cell cell)
         {
-            this.State = cellState.State;
-        }
-
-        public override void Infect()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Cure()
-        {
-            throw new NotImplementedException();
+            cell.Background = Brushes.CadetBlue;
         }
     }
 }

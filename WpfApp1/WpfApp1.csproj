@@ -55,8 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Abstract\CellState.cs" />
-    <Compile Include="Enums\State.cs" />
+    <Compile Include="Abstract\ICellState.cs" />
     <Compile Include="States\HealthyState.cs" />
     <Compile Include="States\ImmuneState.cs" />
     <Compile Include="States\InfectedState.cs" />

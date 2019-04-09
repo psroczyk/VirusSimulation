@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Controls;
+using WpfApp1.States;
 
 namespace WpfApp1
 {
-    class CellFactory
+    public class CellFactory
     {
+        public Cell CreateCell(int x, int y)
+        {
+            var cell = new Cell(x,y, new HealthyState());
+            Grid.SetColumn(cell, x);
+            Grid.SetRow(cell, y);
+            return cell;
+        }
     }
 }

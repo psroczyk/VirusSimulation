@@ -1,28 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Threading;
 using WpfApp1.Abstract;
 
 namespace WpfApp1.States
 {
-    public class InfectedState : CellState
+    public class InfectedState : ICellState
     {
-        public InfectedState(CellState cellState)
+        public void Handle(Cell cell)
         {
-            this.State = cellState.State;
-        }
-
-        public override void Infect()
-        {
-            return;
-        }
-
-        public override void Cure()
-        {
-            this.Cell.CellState = new ImmuneState(this);
-
+            cell.X = 2;
         }
     }
 }
