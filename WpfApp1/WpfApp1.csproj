@@ -55,6 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Abstract\CellState.cs" />
+    <Compile Include="Enums\State.cs" />
+    <Compile Include="States\HealthyState.cs" />
+    <Compile Include="States\ImmuneState.cs" />
+    <Compile Include="States\InfectedState.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -64,6 +69,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Cell.cs" />
+    <Compile Include="CellFactory.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
