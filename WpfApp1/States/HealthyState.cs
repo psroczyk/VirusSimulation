@@ -7,7 +7,8 @@ namespace WpfApp1.States
     {
         public void Handle(Cell cell)
         {
-            cell.Background = Brushes.LawnGreen;
+            cell.Dispatcher.Invoke(() => { cell.Background = Brushes.LawnGreen; });
+
         }
     }
 }
