@@ -26,7 +26,6 @@ namespace WpfApp1
             CellState = cellState;
             MouseLeftButtonDown += Cell_MouseLeftButtonDown;
             CellState.Handle(this);
-            
         }
 
         private void _timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -34,7 +33,6 @@ namespace WpfApp1
             timer.Stop();
             timer.Elapsed -= new ElapsedEventHandler(_timer_Elapsed);
             Inure();
-
         }
 
         public void Infect()

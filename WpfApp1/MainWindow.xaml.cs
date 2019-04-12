@@ -24,12 +24,10 @@ namespace WpfApp1
                     myGrid.Children.Add(point);
                 }
             }
-
         }
 
         private void MyGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
         }
     }
 }
