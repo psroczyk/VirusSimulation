@@ -1,7 +1,7 @@
 ﻿using System.Windows.Media;
-using WpfApp1.Abstract;
+using VirusSimulation.Abstract;
 
-namespace WpfApp1.States
+namespace VirusSimulation.States
 {
     public class ImmuneState : ICellState
     {

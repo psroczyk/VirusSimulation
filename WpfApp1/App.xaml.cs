@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WpfApp1
+namespace VirusSimulation
 {
     /// <summary>
     /// Interaction logic for App.xaml

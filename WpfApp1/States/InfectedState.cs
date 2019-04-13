@@ -1,9 +1,7 @@
-﻿using System;
-using System.Windows.Media;
-using System.Windows.Threading;
-using WpfApp1.Abstract;
+﻿using System.Windows.Media;
+using VirusSimulation.Abstract;
 
-namespace WpfApp1.States
+namespace VirusSimulation.States
 {
     public class InfectedState : ICellState
     {

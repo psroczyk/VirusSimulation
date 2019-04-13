@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
-using WpfApp1.States;
+using VirusSimulation.States;
 
-namespace WpfApp1
+namespace VirusSimulation
 {
     public class CellFactory
     {

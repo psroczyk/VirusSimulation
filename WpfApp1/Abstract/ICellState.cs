@@ -1,4 +1,4 @@
-﻿namespace WpfApp1.Abstract
+﻿namespace VirusSimulation.Abstract
 {
     public interface ICellState
     {

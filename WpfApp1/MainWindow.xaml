@@ -1,9 +1,8 @@
-﻿<Window x:Class="WpfApp1.MainWindow"
+﻿<Window x:Class="VirusSimulation.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="854.191" Width="1089.595">
     <Grid Height="844" VerticalAlignment="Top">
@@ -85,6 +84,9 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
         </Grid>
+        <Slider HorizontalAlignment="Left" Margin="815,45,0,0" VerticalAlignment="Top" Width="166" Minimum="1" SmallChange="1" Value="5"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="815,19,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="986,37,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False"/>
 
     </Grid>
 </Window>

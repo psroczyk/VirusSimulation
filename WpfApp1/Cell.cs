@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Timers;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using WpfApp1.Abstract;
-using WpfApp1.States;
+using VirusSimulation.Abstract;
+using VirusSimulation.States;
 using Timer = System.Timers.Timer;
 
-namespace WpfApp1
+namespace VirusSimulation
 {
     public class Cell : Canvas
     {
