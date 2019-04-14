@@ -15,7 +15,9 @@ namespace VirusSimulation
         public int X { get; }
 
         public int Y { get; }
+
         private Timer timer;
+
         public Cell(int x, int y, ICellState cellState)
         {
             X = x;
@@ -28,12 +30,14 @@ namespace VirusSimulation
         private void _timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             timer.Stop();
-            timer.Elapsed -= new ElapsedEventHandler(_timer_Elapsed);
+            timer.Elapsed -= _timer_Elapsed;
             Inure();
         }
 
         public void Infect()
         {
+            if (CellState is InfectedState) return;
+
             CellState = new InfectedState();
             CellState.Handle(this);
         }
@@ -52,7 +56,6 @@ namespace VirusSimulation
 
         private void Cell_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //MessageBox.Show(X + " " + Y);
             Infect();
             var rand = new Random(DateTime.Now.Millisecond);
             var time = rand.Next(100, 5000);

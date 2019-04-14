@@ -7,6 +7,8 @@ namespace VirusSimulation.States
     {
         public void Handle(Cell cell)
         {
+            //if (cell.CellState is ImmuneState) return;
+
             cell.Dispatcher.Invoke(() => { cell.Background = Brushes.CadetBlue; });
         }
     }

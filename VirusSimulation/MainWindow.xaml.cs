@@ -22,6 +22,16 @@ namespace VirusSimulation
                     myGrid.Children.Add(point);
                 }
             }
+
+            InitializeLabels();
+        }
+
+        private void InitializeLabels()
+        {
+            this.InfectChanceSlider.ValueChanged += (sender, args) => this.InfectChanceValue.Content = InfectChanceSlider.Value + "%";
+            this.InureChanceSlider.ValueChanged += (sender, args) => this.InureChanceValue.Content = InureChanceSlider.Value + "%";
+            this.InfectTimeSlider.ValueChanged += (sender, args) => this.InfectTimeValue.Content = InfectTimeSlider.Value + "s";
+            this.InureTimeSlider.ValueChanged += (sender, args) => this.InureTimeValue.Content = InureTimeSlider.Value + "s";
         }
 
         private void MyGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

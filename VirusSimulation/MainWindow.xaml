@@ -84,9 +84,18 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
         </Grid>
-        <Slider HorizontalAlignment="Left" Margin="815,45,0,0" VerticalAlignment="Top" Width="166" Minimum="1" SmallChange="1" Value="5"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="815,19,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="986,37,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False"/>
+        <Slider x:Name="InfectChanceSlider" HorizontalAlignment="Left" Margin="815,45,0,0" VerticalAlignment="Top" Width="166" SmallChange="10" Value="50" Maximum="100" LargeChange="10" TickFrequency="10" IsSnapToTickEnabled="True"/>
+        <Label Content="Szansa na zarażenie" HorizontalAlignment="Left" Margin="815,19,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False"/>
+        <Label x:Name="InfectChanceValue" Content="50%" HorizontalAlignment="Left" Margin="986,37,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False"/>
+        <Slider x:Name="InureChanceSlider" HorizontalAlignment="Left" Margin="815,120,0,0" VerticalAlignment="Top" Width="166" SmallChange="10" Value="50" Maximum="100" LargeChange="10" TickFrequency="10" IsSnapToTickEnabled="True"/>
+        <Label Content="Szansa na uodpornienie" HorizontalAlignment="Left" Margin="815,94,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False"/>
+        <Label x:Name="InureChanceValue" Content="50%" HorizontalAlignment="Left" Margin="986,112,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False"/>
+        <Slider x:Name="InfectTimeSlider" HorizontalAlignment="Left" Margin="815,205,0,0" VerticalAlignment="Top" Width="166" SmallChange="1" Value="3" Maximum="5" IsSnapToTickEnabled="True" Minimum="1"/>
+        <Label Content="Czas zarażenia" HorizontalAlignment="Left" Margin="815,179,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False"/>
+        <Label x:Name="InfectTimeValue" Content="3s" HorizontalAlignment="Left" Margin="986,198,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False"/>
+        <Slider x:Name="InureTimeSlider" HorizontalAlignment="Left" Margin="815,306,0,0" VerticalAlignment="Top" Width="166" SmallChange="1" Value="3" Maximum="5" IsSnapToTickEnabled="True" Minimum="1"/>
+        <Label Content="Czas odporności" HorizontalAlignment="Left" Margin="815,280,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False"/>
+        <Label x:Name="InureTimeValue" Content="3s" HorizontalAlignment="Left" Margin="986,298,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False"/>
 
     </Grid>
 </Window>
