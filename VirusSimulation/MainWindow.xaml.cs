@@ -28,10 +28,29 @@ namespace VirusSimulation
 
         private void InitializeLabels()
         {
-            this.InfectChanceSlider.ValueChanged += (sender, args) => this.InfectChanceValue.Content = InfectChanceSlider.Value + "%";
-            this.InureChanceSlider.ValueChanged += (sender, args) => this.InureChanceValue.Content = InureChanceSlider.Value + "%";
-            this.InfectTimeSlider.ValueChanged += (sender, args) => this.InfectTimeValue.Content = InfectTimeSlider.Value + "s";
-            this.InureTimeSlider.ValueChanged += (sender, args) => this.InureTimeValue.Content = InureTimeSlider.Value + "s";
+            InfectChanceSlider.ValueChanged += (sender, args) =>
+            {
+                InfectChanceValue.Content = InfectChanceSlider.Value + "%";
+                Settings.Instance.InfectChanceValue = (int)InfectChanceSlider.Value;
+            };
+
+            InureChanceSlider.ValueChanged += (sender, args) =>
+            {
+                InureChanceValue.Content = InureChanceSlider.Value + "%";
+                Settings.Instance.InfectChanceValue = (int)InureChanceSlider.Value;
+            };
+
+            InfectTimeSlider.ValueChanged += (sender, args) =>
+            {
+                InfectTimeValue.Content = InfectTimeSlider.Value + "s";
+                Settings.Instance.InfectChanceValue = (int)InfectTimeSlider.Value;
+            };
+
+            InureTimeSlider.ValueChanged += (sender, args) =>
+            {
+                InureTimeValue.Content = InureTimeSlider.Value + "s";
+                Settings.Instance.InureTimeValue = (int)InureTimeSlider.Value;
+            };
         }
 
         private void MyGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
