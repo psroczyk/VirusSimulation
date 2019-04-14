@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VirusSimulation
 {
-    public interface IIterator
+    public interface IIterator: ICell
     {
         bool HasNext();
 

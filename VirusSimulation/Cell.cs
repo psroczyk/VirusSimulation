@@ -8,15 +8,17 @@ using Timer = System.Timers.Timer;
 
 namespace VirusSimulation
 {
-    public class Cell : Canvas, ICell
+    public class Cell : Canvas, IIterator
     {
+        private Timer timer;
+        private int index;
+
         public ICellState CellState { get; set; }
 
         public int X { get; }
 
         public int Y { get; }
 
-        private Timer timer;
 
         public Cell(int x, int y, ICellState cellState)
         {
@@ -62,6 +64,16 @@ namespace VirusSimulation
             timer = new Timer(time);
             timer.Elapsed += _timer_Elapsed;
             timer.Start();
+        }
+
+        public bool HasNext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ICell Next()
+        {
+            throw new NotImplementedException();
         }
     }
 }
