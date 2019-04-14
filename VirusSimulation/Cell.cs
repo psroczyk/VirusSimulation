@@ -8,7 +8,7 @@ using Timer = System.Timers.Timer;
 
 namespace VirusSimulation
 {
-    public class Cell : Canvas
+    public class Cell : Canvas, ICell
     {
         public ICellState CellState { get; set; }
 

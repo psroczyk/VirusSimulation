@@ -10,12 +10,12 @@ namespace VirusSimulation
 
         public static Settings Instance => Lazy.Value;
 
-        public int InfectChanceValue { get; set; }
+        public int InfectChanceValue { get; set; } = 50;
 
-        public int InureChanceValue { get; set; }
+        public int InureChanceValue { get; set; } = 50;
 
-        public int InfectTimeValue { get; set; }
+        public int InfectTimeValue { get; set; } = 3;
 
-        public int InureTimeValue { get; set; }
+        public int InureTimeValue { get; set; } = 3;
     }
 }

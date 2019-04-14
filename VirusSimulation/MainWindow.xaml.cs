@@ -37,13 +37,13 @@ namespace VirusSimulation
             InureChanceSlider.ValueChanged += (sender, args) =>
             {
                 InureChanceValue.Content = InureChanceSlider.Value + "%";
-                Settings.Instance.InfectChanceValue = (int)InureChanceSlider.Value;
+                Settings.Instance.InureChanceValue = (int)InureChanceSlider.Value;
             };
 
             InfectTimeSlider.ValueChanged += (sender, args) =>
             {
                 InfectTimeValue.Content = InfectTimeSlider.Value + "s";
-                Settings.Instance.InfectChanceValue = (int)InfectTimeSlider.Value;
+                Settings.Instance.InfectTimeValue = (int)InfectTimeSlider.Value;
             };
 
             InureTimeSlider.ValueChanged += (sender, args) =>
