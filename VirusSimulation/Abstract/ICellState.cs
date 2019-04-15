@@ -2,6 +2,6 @@
 {
     public interface ICellState
     {
-        void Handle(Cell cell);
+        void Handle(CellComponent cell);
     }
 }

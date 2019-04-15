@@ -5,10 +5,8 @@ namespace VirusSimulation.States
 {
     public class ImmuneState : ICellState
     {
-        public void Handle(Cell cell)
+        public void Handle(CellComponent cell)
         {
-            //if (cell.CellState is ImmuneState) return;
-
             cell.Dispatcher.Invoke(() => { cell.Background = Brushes.CadetBlue; });
         }
     }

@@ -8,72 +8,31 @@ using Timer = System.Timers.Timer;
 
 namespace VirusSimulation
 {
-    public class Cell : Canvas, IIterator
+    public class Cell : CellComponent
     {
         private Timer timer;
-        private int index;
 
-        public ICellState CellState { get; set; }
-
-        public int X { get; }
-
-        public int Y { get; }
-
-
-        public Cell(int x, int y, ICellState cellState)
+        public Cell(int x, int y, ICellState cellState, IIterator iterator) : base(x, y, cellState, iterator)
         {
-            X = x;
-            Y = y;
-            CellState = cellState;
+            timer = new Timer(Settings.Instance.InfectTimeValue * 1000);
             MouseLeftButtonDown += Cell_MouseLeftButtonDown;
-            CellState.Handle(this);
         }
 
-        private void _timer_Elapsed(object sender, ElapsedEventArgs e)
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             timer.Stop();
-            timer.Elapsed -= _timer_Elapsed;
+            timer.Elapsed -= Timer_Elapsed;
             Inure();
         }
 
-        public void Infect()
-        {
-            if (CellState is InfectedState) return;
-
-            CellState = new InfectedState();
-            CellState.Handle(this);
-        }
-
-        public void Inure()
-        {
-            CellState = new ImmuneState();
-            CellState.Handle(this);
-        }
-
-        public void Cure()
-        {
-            CellState = new HealthyState();
-            CellState.Handle(this);
-        }
 
         private void Cell_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (timer.Enabled) return;
+
             Infect();
-            var rand = new Random(DateTime.Now.Millisecond);
-            var time = rand.Next(100, 5000);
-            timer = new Timer(time);
-            timer.Elapsed += _timer_Elapsed;
+            timer.Elapsed += Timer_Elapsed;
             timer.Start();
-        }
-
-        public bool HasNext()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICell Next()
-        {
-            throw new NotImplementedException();
         }
     }
 }

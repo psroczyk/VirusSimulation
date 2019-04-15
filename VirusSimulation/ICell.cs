@@ -8,8 +8,6 @@ namespace VirusSimulation
 {
     public interface ICell
     {
-        void Infect();
-        void Inure();
-        void Cure();
+
     }
 }

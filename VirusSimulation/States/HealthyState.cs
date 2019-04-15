@@ -5,7 +5,7 @@ namespace VirusSimulation.States
 {
     public class HealthyState : ICellState
     {
-        public void Handle(Cell cell)
+        public void Handle(CellComponent cell)
         {
             cell.Dispatcher.Invoke(() => { cell.Background = Brushes.LawnGreen; });
         }

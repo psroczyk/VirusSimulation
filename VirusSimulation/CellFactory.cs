@@ -7,7 +7,7 @@ namespace VirusSimulation
     {
         public Cell CreateCell(int x, int y)
         {
-            var cell = new Cell(x,y, new HealthyState());
+            var cell = new Cell(x,y, new HealthyState(), new CellIterator());
             Grid.SetColumn(cell, x);
             Grid.SetRow(cell, y);
             return cell;

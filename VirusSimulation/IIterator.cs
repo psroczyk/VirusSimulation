@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace VirusSimulation
 {
-    public interface IIterator: ICell
+    public interface IIterator
     {
         bool HasNext();
 
-        ICell Next();
+        CellComponent Next();
     }
 }
