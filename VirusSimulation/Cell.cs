@@ -12,7 +12,7 @@ namespace VirusSimulation
     {
         private Timer timer;
 
-        public Cell(int x, int y, ICellState cellState, IIterator iterator) : base(x, y, cellState, iterator)
+        public Cell(int x, int y, ICellState cellState) : base(x, y, cellState)
         {
             timer = new Timer(Settings.Instance.InfectTimeValue * 1000);
             MouseLeftButtonDown += Cell_MouseLeftButtonDown;

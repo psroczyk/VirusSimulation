@@ -56,10 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Abstract\ICellState.cs" />
-    <Compile Include="CellComponent.cs" />
+    <Compile Include="Abstract\CellComponent.cs" />
     <Compile Include="CellIterator.cs" />
-    <Compile Include="ICell.cs" />
-    <Compile Include="IIterator.cs" />
+    <Compile Include="Abstract\IIterator.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="States\HealthyState.cs" />
     <Compile Include="States\ImmuneState.cs" />
@@ -73,7 +72,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Cell.cs" />
-    <Compile Include="CellFactory.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

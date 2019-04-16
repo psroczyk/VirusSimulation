@@ -7,11 +7,11 @@ using System.Windows.Controls;
 using VirusSimulation.Abstract;
 using VirusSimulation.States;
 
-namespace VirusSimulation
+namespace VirusSimulation.Abstract
 {
     public abstract class CellComponent : Canvas
     {
-        protected IIterator iterator;
+        private List<CellComponent> cellComponents;
 
         protected ICellState cellState;
 
@@ -19,13 +19,18 @@ namespace VirusSimulation
 
         public int Y { get; }
 
-        public CellComponent(int x, int y, ICellState cellState, IIterator iterator)
+        public CellComponent(int x, int y, ICellState cellState)
         {
+            this.cellComponents = new List<CellComponent>();
             this.X = x;
             this.Y = y;
             this.cellState = cellState;
             cellState.Handle(this);
-            this.iterator = iterator;
+        }
+
+        public IIterator GetIterator()
+        {
+            return new CellIterator(cellComponents);
         }
 
         public void Infect()
@@ -46,6 +51,11 @@ namespace VirusSimulation
         {
             cellState = new HealthyState();
             cellState.Handle(this);
+        }
+
+        public void AddChild(CellComponent cellComponent)
+        {
+            this.cellComponents.Add(cellComponent);
         }
     }
 }

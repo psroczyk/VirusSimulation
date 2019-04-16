@@ -1,25 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using VirusSimulation.Abstract;
 
 namespace VirusSimulation
 {
     public class CellIterator : IIterator
     {
         private int index = 0;
-        private int[,] neighbours = new int[8, 2] { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, -1 }, { 0, 1 }, { 1, -1 }, { 1, 0 }, { 1, 1 } };
+        private List<CellComponent> cells;
+
+        public CellIterator(List<CellComponent> cells)
+        {
+            this.cells = cells;
+        }
+
+        public CellComponent Current()
+        {
+            return cells.ElementAt(index);
+        }
+
+        public CellComponent First()
+        {
+            index = 0;
+            return cells.ElementAt(0);
+        }
 
         public bool HasNext()
         {
-            return index < neighbours.Length;
+            return index < cells.Count;
         }
 
         public CellComponent Next()
         {
-
-            int a, b;
+            return cells.ElementAt(index++);
         }
     }
 }
