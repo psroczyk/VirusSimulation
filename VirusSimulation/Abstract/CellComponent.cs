@@ -33,29 +33,17 @@ namespace VirusSimulation.Abstract
             return new CellIterator(cellComponents);
         }
 
-        public void Infect()
-        {
-            if (cellState is InfectedState) return;
-
-            cellState = new InfectedState();
-            cellState.Handle(this);
-        }
-
-        public void Inure()
-        {
-            cellState = new ImmuneState();
-            cellState.Handle(this);
-        }
-
-        public void Cure()
-        {
-            cellState = new HealthyState();
-            cellState.Handle(this);
-        }
-
         public void AddChild(CellComponent cellComponent)
         {
             this.cellComponents.Add(cellComponent);
         }
+
+        public abstract void Infect();
+
+
+        public abstract void Inure();
+
+
+        public abstract void Cure();
     }
 }

@@ -5,6 +5,9 @@ using System.Linq;
 using System.Collections.Generic;
 using VirusSimulation.States;
 using VirusSimulation.Abstract;
+using System;
+using System.Timers;
+using System.Collections.Concurrent;
 
 namespace VirusSimulation
 {
@@ -13,34 +16,24 @@ namespace VirusSimulation
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static List<KeyValuePair<int, int>> KeyValuePairs = new List<KeyValuePair<int, int>>();
+        private BlockingCollection<Cell> cells;
+        static MainWindow()
+        {
+            KeyValuePairs.Add(new KeyValuePair<int, int>(-1, -1));
+            KeyValuePairs.Add(new KeyValuePair<int, int>(-1, 0));
+            KeyValuePairs.Add(new KeyValuePair<int, int>(-1, 1));
+            KeyValuePairs.Add(new KeyValuePair<int, int>(0, -1));
+            KeyValuePairs.Add(new KeyValuePair<int, int>(0, 1));
+            KeyValuePairs.Add(new KeyValuePair<int, int>(1, -1));
+            KeyValuePairs.Add(new KeyValuePair<int, int>(1, 0));
+            KeyValuePairs.Add(new KeyValuePair<int, int>(1, 1));
+        }
+
         public MainWindow()
         {
             InitializeComponent();
-
-            var cells = new List<CellComponent>();
-
-            for (int i = 0; i < myGrid.ColumnDefinitions.Count; i++)
-            {
-                for (int j = 0; j < myGrid.RowDefinitions.Count; j++)
-                {
-                    var cell = new Cell(i, j, new HealthyState());
-                    Grid.SetColumn(cell, i);
-                    Grid.SetRow(cell, j);
-                    cells.Add(cell);
-                    myGrid.Children.Add(cell);
-                }
-            }
-
-            foreach (var cell in cells)
-            {
-                foreach (var index in KeyValuePairs)
-                {
-                    int a = cell.X + index.Key, b = cell.Y + index.Value;
-                    if (a < 0 || b < 0 || a > myGrid.RowDefinitions.Count - 1 || b > myGrid.ColumnDefinitions.Count - 1) continue;
-                    cell.AddChild(cells.FirstOrDefault(x => x.X == a && x.Y == b));
-                }
-            }
-
+            PopulateGridWithCells();
             InitializeLabels();
         }
 
@@ -71,22 +64,93 @@ namespace VirusSimulation
             };
         }
 
-        private void MyGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void PopulateGridWithCells()
         {
+            cells = new BlockingCollection<Cell>();
+
+            for (int i = 0; i < myGrid.ColumnDefinitions.Count; i++)
+            {
+                for (int j = 0; j < myGrid.RowDefinitions.Count; j++)
+                {
+                    var cell = new Cell(i, j, new HealthyState());
+                    Grid.SetColumn(cell, i);
+                    Grid.SetRow(cell, j);
+                    cells.Add(cell);
+                    myGrid.Children.Add(cell);
+                }
+            }
+
+            foreach (var cell in cells)
+            {
+                foreach (var index in KeyValuePairs)
+                {
+                    int a = cell.X + index.Key, b = cell.Y + index.Value;
+                    if (a < 0 || b < 0 || a > myGrid.RowDefinitions.Count - 1 || b > myGrid.ColumnDefinitions.Count - 1) continue;
+                    cell.AddChild(cells.FirstOrDefault(x => x.X == a && x.Y == b));
+                }
+            }
         }
 
-        public static List<KeyValuePair<int, int>> KeyValuePairs = new List<KeyValuePair<int, int>>();
-
-        static MainWindow()
+        private void MyGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            KeyValuePairs.Add(new KeyValuePair<int, int>(-1, -1));
-            KeyValuePairs.Add(new KeyValuePair<int, int>(-1, 0));
-            KeyValuePairs.Add(new KeyValuePair<int, int>(-1, 1));
-            KeyValuePairs.Add(new KeyValuePair<int, int>(0, -1));
-            KeyValuePairs.Add(new KeyValuePair<int, int>(0, 1));
-            KeyValuePairs.Add(new KeyValuePair<int, int>(1, -1));
-            KeyValuePairs.Add(new KeyValuePair<int, int>(1, 0));
-            KeyValuePairs.Add(new KeyValuePair<int, int>(1, 1));
+            var point = Mouse.GetPosition(myGrid);
+            int row = 0, col = 0;
+            double accumulatedHeight = 0.0, accumulatedWidth = 0.0;
+
+            // calc row mouse was over
+            foreach (var rowDefinition in myGrid.RowDefinitions)
+            {
+                accumulatedHeight += rowDefinition.ActualHeight;
+                if (accumulatedHeight >= point.Y)
+                    break;
+                row++;
+            }
+
+            // calc col mouse was over
+            foreach (var columnDefinition in myGrid.ColumnDefinitions)
+            {
+                accumulatedWidth += columnDefinition.ActualWidth;
+                if (accumulatedWidth >= point.X)
+                    break;
+                col++;
+            }
+            int a = row, b = col;
+            var cell = cells.FirstOrDefault(x => x.X == col && x.Y == row);
+            cell.Infect();
+        }
+
+        public static void Timer_Elapsed(object sender, ElapsedEventArgs e, Cell cell)
+        {
+            var tim = (Timer)sender;
+            tim.Stop();
+
+            var rand = new Random(DateTime.Now.Millisecond);
+            if (Settings.Instance.InureChanceValue >= rand.Next(1, 100))
+            {
+                cell.Inure();
+            }
+            else
+            {
+                cell.Infect();
+            }
+
+            var iterator = cell.GetIterator();
+
+            while (iterator.HasNext())
+            {
+                var celsl = iterator.Next();
+                if (Settings.Instance.InfectChanceValue >= rand.Next(1, 100))
+                {
+                    celsl.Infect();
+                }
+            }
+        }
+
+        public static void Timer_Elapsed_Heal(object sender, ElapsedEventArgs e, Cell cell)
+        {
+            var tim = (Timer)sender;
+            tim.Stop();
+            cell.Cure();
         }
     }
 }

@@ -32,6 +32,12 @@ namespace VirusSimulation
 
         public CellComponent Next()
         {
+            if (index == 0)
+            {
+                index++;
+                return cells.First();
+            }
+
             return cells.ElementAt(index++);
         }
     }

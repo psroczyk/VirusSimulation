@@ -14,25 +14,47 @@ namespace VirusSimulation
 
         public Cell(int x, int y, ICellState cellState) : base(x, y, cellState)
         {
+            timer = new Timer();
+        }
+
+        public override void Infect()
+        {
+            if (timer.Enabled)
+            {
+                return;
+            }
+
+            cellState = new InfectedState();
+            cellState.Handle(this);
+
             timer = new Timer(Settings.Instance.InfectTimeValue * 1000);
-            MouseLeftButtonDown += Cell_MouseLeftButtonDown;
-        }
-
-        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            timer.Stop();
-            timer.Elapsed -= Timer_Elapsed;
-            Inure();
-        }
-
-
-        private void Cell_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (timer.Enabled) return;
-
-            Infect();
-            timer.Elapsed += Timer_Elapsed;
+            timer.Elapsed += (sender, e) => MainWindow.Timer_Elapsed(sender, e, this);
             timer.Start();
+        }
+
+        public override void Inure()
+        {
+            if (timer.Enabled)
+            {
+                return;
+            }
+
+            cellState = new ImmuneState();
+            cellState.Handle(this);
+            timer = new Timer(Settings.Instance.InureTimeValue * 1000);
+            timer.Elapsed += (s, e) => MainWindow.Timer_Elapsed_Heal(s, e, this);
+            timer.Start();
+        }
+
+        public override void Cure()
+        {
+            if (timer.Enabled)
+            {
+                return;
+            }
+
+            cellState = new HealthyState();
+            cellState.Handle(this);
         }
     }
 }
