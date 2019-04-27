@@ -72,7 +72,7 @@ namespace VirusSimulation
             {
                 for (int j = 0; j < myGrid.RowDefinitions.Count; j++)
                 {
-                    var cell = new Cell(i, j, new HealthyState());
+                    var cell = new Cell(i, j);
                     Grid.SetColumn(cell, i);
                     Grid.SetRow(cell, j);
                     cells.Add(cell);

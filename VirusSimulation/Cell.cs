@@ -12,7 +12,7 @@ namespace VirusSimulation
     {
         private Timer timer;
 
-        public Cell(int x, int y, ICellState cellState) : base(x, y, cellState)
+        public Cell(int x, int y) : base(x, y)
         {
             timer = new Timer();
         }

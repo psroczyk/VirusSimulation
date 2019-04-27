@@ -19,12 +19,12 @@ namespace VirusSimulation.Abstract
 
         public int Y { get; }
 
-        public CellComponent(int x, int y, ICellState cellState)
+        public CellComponent(int x, int y)
         {
             this.cellComponents = new List<CellComponent>();
             this.X = x;
             this.Y = y;
-            this.cellState = cellState;
+            this.cellState = new HealthyState();
             cellState.Handle(this);
         }
 
