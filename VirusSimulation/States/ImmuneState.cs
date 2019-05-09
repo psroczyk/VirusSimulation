@@ -1,4 +1,5 @@
-﻿using System.Windows.Media;
+﻿using System;
+using System.Windows.Media;
 using VirusSimulation.Abstract;
 
 namespace VirusSimulation.States
@@ -7,7 +8,11 @@ namespace VirusSimulation.States
     {
         public void Handle(CellComponent cell)
         {
-            cell.Dispatcher.Invoke(() => { cell.Background = Brushes.CadetBlue; });
+            try
+            {
+                cell.Dispatcher.Invoke(() => { cell.Background = Brushes.CadetBlue; });
+            }
+            catch { }
         }
     }
 }

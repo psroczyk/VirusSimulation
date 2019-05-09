@@ -7,7 +7,11 @@ namespace VirusSimulation.States
     {
         public void Handle(CellComponent cell)
         {
-            cell.Dispatcher.Invoke(() => { cell.Background = Brushes.LawnGreen; });
+            try
+            {
+                cell.Dispatcher.Invoke(() => { cell.Background = Brushes.LawnGreen; });
+            }
+            catch { }
         }
     }
 }
