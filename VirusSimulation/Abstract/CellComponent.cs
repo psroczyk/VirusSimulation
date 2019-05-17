@@ -14,7 +14,6 @@ namespace VirusSimulation.Abstract
     {
         private List<CellComponent> cellComponents;
 
-        private static Random rand;
 
         protected ICellState cellState;
 
@@ -29,7 +28,6 @@ namespace VirusSimulation.Abstract
             this.Y = y;
             this.cellState = new HealthyState();
             cellState.Handle(this);
-            rand = new Random(DateTime.UtcNow.Millisecond);
         }
 
         public IIterator GetIterator()
@@ -43,19 +41,17 @@ namespace VirusSimulation.Abstract
         }
 
         public abstract void Infect();
-
-
+        
         public abstract void Inure();
-
 
         public abstract void Cure();
 
-        public void Timer_Elapsed(object sender, ElapsedEventArgs e, Cell cell)
+        public void Timer_Elapsed_Infect(object sender, ElapsedEventArgs e, Cell cell)
         {
             var tim = (Timer)sender;
             tim.Stop();
 
-            if (Settings.Instance.InureChanceValue >= rand.Next(1, 100))
+            if (Settings.Instance.InureChanceValue >= RandomStatic.Instance.Next(1, 100))
                 cell.Inure();
             else
                 cell.Infect();
@@ -67,7 +63,7 @@ namespace VirusSimulation.Abstract
                 while (iterator.HasNext())
                 {
                     var cellN = iterator.Next();
-                    if (Settings.Instance.InfectChanceValue >= rand.Next(1, 100))
+                    if (Settings.Instance.InfectChanceValue >= RandomStatic.Instance.Next(1, 100))
                     {
                         cellN.Infect();
                     }

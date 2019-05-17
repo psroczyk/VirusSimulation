@@ -63,7 +63,8 @@
     <Compile Include="States\HealthyState.cs" />
     <Compile Include="States\ImmuneState.cs" />
     <Compile Include="States\InfectedState.cs" />
-    <Page Include="MainWindow.xaml">
+    <Compile Include="RandomStatic.cs" />
+    <Page Include="Board.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -72,8 +73,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Cell.cs" />
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Board.xaml.cs">
+      <DependentUpon>Board.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

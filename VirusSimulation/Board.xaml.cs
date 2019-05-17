@@ -4,17 +4,15 @@ using System.Windows.Input;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
+using System.Windows.Media;
 
 namespace VirusSimulation
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class Board : Window
     {
         public static List<KeyValuePair<int, int>> KeyValuePairs = new List<KeyValuePair<int, int>>();
         private BlockingCollection<Cell> cells;
-        static MainWindow()
+        static Board()
         {
             KeyValuePairs.Add(new KeyValuePair<int, int>(-1, -1));
             KeyValuePairs.Add(new KeyValuePair<int, int>(-1, 0));
@@ -26,12 +24,12 @@ namespace VirusSimulation
             KeyValuePairs.Add(new KeyValuePair<int, int>(1, 1));
         }
 
-        public MainWindow()
+        public Board()
         {
             InitializeComponent();
             PopulateGridWithCells();
             InitializeLabels();
-        }
+            }
 
         private void InitializeLabels()
         {
@@ -58,6 +56,9 @@ namespace VirusSimulation
                 InureTimeValue.Content = InureTimeSlider.Value + "s";
                 Settings.Instance.InureTimeValue = (int)InureTimeSlider.Value;
             };
+            LegendBrushInfected.Background = Settings.Instance.Infected;
+            LegendBrushInInure.Background = Settings.Instance.Immune;
+            LegendBrushInHealthy.Background = Settings.Instance.Healthy;
         }
 
         private void PopulateGridWithCells()

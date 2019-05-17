@@ -9,7 +9,7 @@ namespace VirusSimulation.States
         {
             try
             {
-                cell.Dispatcher.Invoke(() => { cell.Background = Brushes.DarkRed; });
+                cell.Dispatcher.Invoke(() => { cell.Background = Settings.Instance.Infected; });
             }
             catch { }
         }

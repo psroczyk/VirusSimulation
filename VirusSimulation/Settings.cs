@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Media;
 
 namespace VirusSimulation
 {
@@ -6,7 +7,9 @@ namespace VirusSimulation
     {
         private static readonly Lazy<Settings> Lazy = new Lazy<Settings>(() => new Settings());
 
-        private Settings() { }
+        private Settings()
+        {
+        }
 
         public static Settings Instance => Lazy.Value;
 
@@ -17,5 +20,11 @@ namespace VirusSimulation
         public int InfectTimeValue { get; set; } = 3;
 
         public int InureTimeValue { get; set; } = 3;
+
+        public Brush Infected { get; } = Brushes.DarkRed;
+
+        public Brush Immune { get; } = Brushes.CadetBlue;
+
+        public Brush Healthy { get; } = Brushes.LawnGreen;
     }
 }

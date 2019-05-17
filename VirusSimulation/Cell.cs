@@ -21,7 +21,7 @@ namespace VirusSimulation
             cellState.Handle(this);
 
             timer = new Timer(Settings.Instance.InfectTimeValue * 1000);
-            timer.Elapsed += (sender, e) => Timer_Elapsed(sender, e, this);
+            timer.Elapsed += (sender, e) => Timer_Elapsed_Infect(sender, e, this);
             timer.Start();
         }
 
