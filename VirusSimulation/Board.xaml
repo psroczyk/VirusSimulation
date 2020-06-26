@@ -8,7 +8,7 @@
     <Grid Height="844" VerticalAlignment="Top">
         <Grid Name="myGrid" Background="LightSteelBlue" HorizontalAlignment="Left" Height="800" Margin="10,10,0,-74" VerticalAlignment="Top" Width="800"  MouseLeftButtonDown="MyGrid_MouseLeftButtonDown">
             <Grid.ColumnDefinitions>
-            <ColumnDefinition />
+                <ColumnDefinition />
                 <ColumnDefinition />
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -188,24 +188,24 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
         </Grid>
-        <Slider x:Name="InfectChanceSlider" HorizontalAlignment="Left" Margin="639,45,0,0" VerticalAlignment="Top" Width="166" SmallChange="10" Value="50" Maximum="100" LargeChange="10" TickFrequency="10" IsSnapToTickEnabled="True" Grid.Column="1"/>
-        <Label Content="Szansa na zarażenie" HorizontalAlignment="Left" Margin="639,19,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False" Grid.Column="1"/>
-        <Label x:Name="InfectChanceValue" Content="50%" HorizontalAlignment="Left" Margin="810,37,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False" Grid.Column="1"/>
-        <Slider x:Name="InureChanceSlider" HorizontalAlignment="Left" Margin="639,120,0,0" VerticalAlignment="Top" Width="166" SmallChange="10" Value="50" Maximum="100" LargeChange="10" TickFrequency="10" IsSnapToTickEnabled="True" Grid.Column="1"/>
-        <Label Content="Szansa na uodpornienie" HorizontalAlignment="Left" Margin="639,94,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False" Grid.Column="1"/>
-        <Label x:Name="InureChanceValue" Content="50%" HorizontalAlignment="Left" Margin="810,112,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False" Grid.Column="1"/>
-        <Slider x:Name="InfectTimeSlider" HorizontalAlignment="Left" Margin="639,205,0,0" VerticalAlignment="Top" Width="166" SmallChange="1" Value="3" Maximum="5" IsSnapToTickEnabled="True" Minimum="1" Grid.Column="1"/>
-        <Label Content="Czas zarażenia" HorizontalAlignment="Left" Margin="639,179,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False" Grid.Column="1"/>
-        <Label x:Name="InfectTimeValue" Content="3s" HorizontalAlignment="Left" Margin="810,198,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False" Grid.Column="1"/>
-        <Slider x:Name="InureTimeSlider" HorizontalAlignment="Left" Margin="639,306,0,0" VerticalAlignment="Top" Width="166" SmallChange="1" Value="3" Maximum="5" IsSnapToTickEnabled="True" Minimum="1" Grid.Column="1"/>
-        <Label Content="Czas odporności" HorizontalAlignment="Left" Margin="639,280,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False" Grid.Column="1"/>
-        <Label x:Name="InureTimeValue" Content="3s" HorizontalAlignment="Left" Margin="810,298,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False" Grid.Column="1"/>
-        <Canvas x:Name="LegendBrushInHealthy" HorizontalAlignment="Left" Height="18" Margin="648,366,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1"/>
-        <Canvas x:Name="LegendBrushInfected" HorizontalAlignment="Left" Height="18" Margin="648,389,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1"/>
-        <Canvas x:Name="LegendBrushInInure" HorizontalAlignment="Left" Height="18" Margin="648,412,0,0" VerticalAlignment="Top" Width="49" Grid.Column="1"/>
-        <Label Content="Zdrowe" HorizontalAlignment="Left" Margin="702,358,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False" Grid.Column="1"/>
-        <Label Content="Zarażone" HorizontalAlignment="Left" Margin="702,384,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False" Grid.Column="1"/>
-        <Label Content="Odporne" HorizontalAlignment="Left" Margin="702,410,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False" Grid.Column="1"/>
+        <Slider x:Name="InfectChanceSlider" HorizontalAlignment="Left" Margin="824,43,0,0" VerticalAlignment="Top" Width="166" SmallChange="10" Value="50" Maximum="100" LargeChange="10" TickFrequency="10" IsSnapToTickEnabled="True"/>
+        <Label Content="Szansa na zarażenie" HorizontalAlignment="Left" Margin="824,17,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False"/>
+        <Label x:Name="InfectChanceValue" Content="50%" HorizontalAlignment="Left" Margin="995,35,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False"/>
+        <Slider x:Name="InureChanceSlider" HorizontalAlignment="Left" Margin="824,118,0,0" VerticalAlignment="Top" Width="166" SmallChange="10" Value="50" Maximum="100" LargeChange="10" TickFrequency="10" IsSnapToTickEnabled="True"/>
+        <Label Content="Szansa na uodpornienie" HorizontalAlignment="Left" Margin="824,92,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False"/>
+        <Label x:Name="InureChanceValue" Content="50%" HorizontalAlignment="Left" Margin="995,110,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False"/>
+        <Slider x:Name="InfectTimeSlider" HorizontalAlignment="Left" Margin="824,203,0,0" VerticalAlignment="Top" Width="166" SmallChange="1" Value="3" Maximum="5" IsSnapToTickEnabled="True" Minimum="1"/>
+        <Label Content="Czas zarażenia" HorizontalAlignment="Left" Margin="824,177,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False"/>
+        <Label x:Name="InfectTimeValue" Content="3s" HorizontalAlignment="Left" Margin="995,196,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False"/>
+        <Slider x:Name="InureTimeSlider" HorizontalAlignment="Left" Margin="824,304,0,0" VerticalAlignment="Top" Width="166" SmallChange="1" Value="3" Maximum="5" IsSnapToTickEnabled="True" Minimum="1"/>
+        <Label Content="Czas odporności" HorizontalAlignment="Left" Margin="824,278,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False"/>
+        <Label x:Name="InureTimeValue" Content="3s" HorizontalAlignment="Left" Margin="995,296,0,0" VerticalAlignment="Top" Width="39" IsEnabled="False"/>
+        <Canvas x:Name="LegendBrushInHealthy" HorizontalAlignment="Left" Height="18" Margin="833,364,0,0" VerticalAlignment="Top" Width="49"/>
+        <Canvas x:Name="LegendBrushInfected" HorizontalAlignment="Left" Height="18" Margin="833,387,0,0" VerticalAlignment="Top" Width="49"/>
+        <Canvas x:Name="LegendBrushInInure" HorizontalAlignment="Left" Height="18" Margin="833,410,0,0" VerticalAlignment="Top" Width="49"/>
+        <Label Content="Zdrowe" HorizontalAlignment="Left" Margin="887,356,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False"/>
+        <Label Content="Zarażone" HorizontalAlignment="Left" Margin="887,382,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False"/>
+        <Label Content="Odporne" HorizontalAlignment="Left" Margin="887,408,0,0" VerticalAlignment="Top" Width="166" IsEnabled="False"/>
 
     </Grid>
 </Window>
