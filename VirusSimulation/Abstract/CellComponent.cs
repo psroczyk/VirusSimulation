@@ -51,7 +51,7 @@ namespace VirusSimulation.Abstract
             var tim = (Timer)sender;
             tim.Stop();
 
-            if (Settings.Instance.InureChanceValue >= RandomStatic.Instance.Next(1, 100))
+            if (Settings.Instance.InureChanceValue >= RandomStatic.Rand())
                 cell.Inure();
             else
                 cell.Infect();
@@ -63,7 +63,7 @@ namespace VirusSimulation.Abstract
                 while (iterator.HasNext())
                 {
                     var cellN = iterator.Next();
-                    if (Settings.Instance.InfectChanceValue >= RandomStatic.Instance.Next(1, 100))
+                    if (Settings.Instance.InfectChanceValue >= RandomStatic.Rand())
                     {
                         cellN.Infect();
                     }

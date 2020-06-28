@@ -1,14 +1,19 @@
 ﻿using System;
+using System.Threading;
 using System.Timers;
 
 namespace VirusSimulation
 {
     public class RandomStatic
     {
-        private static readonly Lazy<Random> Lazy = new Lazy<Random>(() => new Random());
+        static int seed = Environment.TickCount;
 
-        private RandomStatic() { }
+        static readonly ThreadLocal<Random> random =
+            new ThreadLocal<Random>(() => new Random(Interlocked.Increment(ref seed)));
 
-        public static Random Instance => Lazy.Value;
+        public static int Rand()
+        {
+            return random.Value.Next(1, 100);
+        }
     }
 }
